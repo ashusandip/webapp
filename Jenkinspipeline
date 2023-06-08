@@ -1,0 +1,31 @@
+pipeline {
+    agent any
+    parameters {
+        string(name: 'name', defaultValue: 'Ashwini', description: 'username')
+
+        text(name: 'desc', defaultValue: '', description: 'description about the user. ')
+
+        booleanParam(name: 'toggle', defaultValue: false, description: 'Enable/Disable')
+
+        choice(name: 'choice', choices: [1,2,3,4,5], description: 'choose a value')
+
+        password(name: 'passwd', defaultValue: 'secret', description: 'provide password')
+    }
+    stages {
+        stage('Example') {
+            steps {
+                echo "Hello ${params.name}"
+
+                echo "desc: ${params.desc}"
+
+                echo "toggle: ${params.toggle}"
+
+                echo "choice: ${params.choice}"
+                
+
+                echo "password: ${params.passwd}"
+            }
+        }
+    }
+
+}
